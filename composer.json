@@ -1,0 +1,25 @@
+{
+    "name": "estandarte/syclass-fipe-bundle",
+    "type": "symfony-bundle",
+    "description": "FIPE monitor for Syclass",
+    "keywords": ["syclass", "monitor", "fipe"],
+    "homepage": "https://github.com/estandarte/syclass-fipe-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Leandro Chaves",
+            "email": "leandrorchaves@gmail.com"
+        }
+    ],
+    "require": {
+        "syclass/core": "dev-master"
+    },
+    "require-dev": {
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-4": { "Syclass\\FipeBundle\\": "src/" }
+    }
+}
