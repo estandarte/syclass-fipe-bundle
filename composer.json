@@ -1,5 +1,5 @@
 {
-    "name": "estandarte/syclass-fipe-bundle",
+    "name": "syclass/fipe-bundle",
     "type": "symfony-bundle",
     "description": "FIPE monitor for Syclass",
     "keywords": ["syclass", "monitor", "fipe"],
