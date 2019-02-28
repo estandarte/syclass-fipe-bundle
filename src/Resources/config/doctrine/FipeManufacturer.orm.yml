@@ -1,0 +1,94 @@
+Syclass\FipeBundle\Entity\FipeManufacturer:
+    type: entity
+    table: oc_t_fipe_manufacturer
+    repositoryClass: Syclass\FipeBundle\Repository\FipeManufacturerRepository
+    id:
+        id:
+            type: string
+            scale: 0
+            length: 8
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            # generator:
+            #     strategy: IDENTITY
+    fields:
+        manufacturer:
+            type: string
+            scale: 0
+            length: 60
+            unique: false
+            nullable: false
+            precision: 0
+        name:
+            type: string
+            scale: 0
+            length: 60
+            unique: false
+            nullable: false
+            precision: 0
+        slug:
+            type: string
+            scale: 0
+            length: 60
+            unique: false
+            nullable: false
+            precision: 0
+        logo:
+            type: string
+            scale: 0
+            length: 999
+            unique: false
+            nullable: true
+            precision: 0
+        updated:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        inserted:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+    oneToMany:
+        vehicles:
+            targetEntity: Syclass\FipeBundle\Entity\FipeVehicle
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: manufacturer
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+        updates:
+            targetEntity: Syclass\FipeBundle\Entity\FipeManufacturerUpdate
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: manufacturer
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+    manyToMany:
+        tables:
+            targetEntity: Syclass\FipeBundle\Entity\FipeTable
+            joinTable:
+                name: fipe_table_manufacturer
+                joinColumns:
+                    manufacturer_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    table_id:
+                        referencedColumnName: id
+
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: manufacturers
+            orphanRemoval: false
+            orderBy: null
+    lifecycleCallbacks: {  }

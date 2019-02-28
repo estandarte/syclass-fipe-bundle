@@ -1,0 +1,108 @@
+Syclass\FipeBundle\Entity\FipeTable:
+    type: entity
+    table: oc_t_fipe_table
+    repositoryClass: Syclass\FipeBundle\Repository\FipeTableRepository
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+    fields:
+        description:
+            type: string
+            scale: 0
+            length: 20
+            unique: false
+            nullable: false
+            precision: 0
+        slug:
+            type: string
+            scale: 0
+            length: 60
+            unique: false
+            nullable: true
+            precision: 0
+        month:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        updated:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        inserted:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        checked:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+    oneToMany:
+        manufacturer_update:
+            targetEntity: Syclass\FipeBundle\Entity\FipeManufacturerUpdate
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: table
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+        prices:
+            targetEntity: Syclass\FipeBundle\Entity\FipeVehicleYear
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: table
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+    manyToMany:
+        manufacturers:
+            targetEntity: FipeManufacturer
+            mappedBy: tables
+            # joinTable:
+            #     name: fipe_table_manufacturer
+            #     joinColumns:
+            #         table_id:
+            #             referencedColumnName: id
+            #     inverseJoinColumns:
+            #         manufacturer_id:
+            #             referencedColumnName: id
+        vehicles:
+            targetEntity: FipeVehicle
+            inversedBy: tables
+            joinTable:
+                name: fipe_table_vehicle
+                joinColumns:
+                    table_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    vehicle_id:
+                        referencedColumnName: id
+        years:
+            targetEntity: FipeVehicleYear
+            inversedBy: tables
+            joinTable:
+                name: fipe_table_vehicle_year
+                joinColumns:
+                    table_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    year_id:
+                        referencedColumnName: id
+    lifecycleCallbacks: {  }

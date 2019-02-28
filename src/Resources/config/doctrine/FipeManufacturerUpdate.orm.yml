@@ -1,0 +1,49 @@
+Syclass\FipeBundle\Entity\FipeManufacturerUpdate:
+    type: entity
+    table: oc_t_fipe_manufacturer_update
+    id:
+        id:
+            type: string
+            scale: 0
+            length: 40
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+    fields:
+        updated:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        inserted:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+    manyToOne:
+        table:
+            targetEntity: Syclass\FipeBundle\Entity\FipeTable
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: manufacturer_update
+            joinColumns:
+                table_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        manufacturer:
+            targetEntity: Syclass\FipeBundle\Entity\FipeManufacturer
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: updates
+            joinColumns:
+                manufacturer_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

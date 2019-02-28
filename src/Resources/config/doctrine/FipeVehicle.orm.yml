@@ -1,0 +1,111 @@
+Syclass\FipeBundle\Entity\FipeVehicle:
+    type: entity
+    table: oc_t_fipe_vehicle
+    repositoryClass: Syclass\FipeBundle\Repository\FipeVehicleRepository
+    id:
+        id:
+            type: string
+            scale: 0
+            length: 8
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            # generator:
+            #     strategy: IDENTITY
+    fields:
+        vehicle_id:
+            type: string
+            scale: 0
+            length: 8
+            unique: false
+            nullable: false
+            precision: 0
+        name:
+            type: string
+            scale: 0
+            length: 60
+            unique: false
+            nullable: false
+            precision: 0
+        search:
+            type: string
+            scale: 0
+            length: 120
+            unique: false
+            nullable: true
+            precision: 0
+        slug:
+            type: string
+            scale: 0
+            length: 60
+            unique: false
+            nullable: false
+            precision: 0
+        updated:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        inserted:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        cover:
+            type: string
+            scale: 0
+            length: 999
+            unique: false
+            nullable: true
+            precision: 0
+    manyToOne:
+        manufacturer:
+            targetEntity: Syclass\FipeBundle\Entity\FipeManufacturer
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: vehicles
+            joinColumns:
+                manufacturer_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        tables:
+            targetEntity: Syclass\FipeBundle\Entity\FipeTable
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: vehicles
+            inversedBy: null
+            joinTable: {  }
+            orderBy: null
+    oneToMany:
+        years:
+            targetEntity: Syclass\FipeBundle\Entity\FipeVehicleYear
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: vehicle
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+        prices:
+            targetEntity: Syclass\FipeBundle\Entity\FipeVehicleYear
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: vehicle
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+        updates:
+            targetEntity: Syclass\FipeBundle\Entity\FipeVehicleUpdate
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: vehicle
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+    lifecycleCallbacks: {  }

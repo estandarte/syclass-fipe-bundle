@@ -1,0 +1,55 @@
+services:
+    syclass.fipe.monitor.table:
+        class: Syclass\FipeBundle\Monitor\Table
+        arguments: ['@doctrine', '@kernel']
+
+    syclass.fipe.monitor.manufacturer:
+        class: Syclass\FipeBundle\Monitor\Manufacturer
+        arguments: ['@doctrine', '@kernel']
+
+    syclass.fipe.monitor.vehicle:
+        class: Syclass\FipeBundle\Monitor\Vehicle
+        arguments: ['@doctrine', '@kernel']
+
+    syclass.fipe.monitor.year:
+        class: Syclass\FipeBundle\Monitor\Year
+        arguments: ['@doctrine', '@kernel']
+
+    syclass.fipe.monitor.price:
+        class: Syclass\FipeBundle\Monitor\Price
+        arguments: ['@doctrine', '@kernel']
+
+    syclass.fipe.command.monitor.table:
+        class: Syclass\FipeBundle\Command\SyclassFipeTableCommand
+        arguments: ['@syclass.fipe.monitor.table']
+        tags:
+            -  { name: console.command }
+
+    syclass.fipe.command.monitor.manufacturer:
+        class: Syclass\FipeBundle\Command\SyclassFipeManufacturerCommand
+        arguments: ['@syclass.fipe.monitor.manufacturer']
+        tags:
+            -  { name: console.command }
+
+    syclass.fipe.command.monitor.vehicle:
+        class: Syclass\FipeBundle\Command\SyclassFipeVehicleCommand
+        arguments: ['@syclass.fipe.monitor.vehicle']
+        tags:
+            -  { name: console.command }
+
+    syclass.fipe.command.monitor.year:
+        class: Syclass\FipeBundle\Command\SyclassFipeYearCommand
+        arguments: ['@syclass.fipe.monitor.year']
+        tags:
+            -  { name: console.command }
+
+    syclass.fipe.command.monitor.price:
+        class: Syclass\FipeBundle\Command\SyclassFipePriceCommand
+        arguments: ['@syclass.fipe.monitor.price']
+        tags:
+            -  { name: console.command }
+
+    # Syclass\FipeBundle\Repository\:
+    #     resource: '../Repository'
+    #     autowire: true
+    #     tags: ['doctrine.repository_service']

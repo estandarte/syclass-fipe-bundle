@@ -1,0 +1,82 @@
+Syclass\FipeBundle\Entity\FipeVehicleYear:
+    type: entity
+    table: oc_t_fipe_vehicle_year
+    repositoryClass: Syclass\FipeBundle\Repository\FipeVehicleYearRepository
+    id:
+        id:
+            type: string
+            scale: 0
+            length: 40
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+    fields:
+        name:
+            type: string
+            scale: 0
+            length: 60
+            unique: false
+            nullable: false
+            precision: 0
+        slug:
+            type: string
+            scale: 0
+            length: 60
+            unique: false
+            nullable: false
+            precision: 0
+        updated:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        inserted:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+    manyToOne:
+        vehicle:
+            targetEntity: Syclass\FipeBundle\Entity\FipeVehicle
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: years
+            joinColumns:
+                vehicle_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        manufacturer:
+            targetEntity: Syclass\FipeBundle\Entity\FipeManufacturer
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: vehicles
+            joinColumns:
+                manufacturer_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        tables:
+            targetEntity: Syclass\FipeBundle\Entity\FipeTable
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: years
+            inversedBy: null
+            joinTable: {  }
+            orderBy: null
+    oneToMany:
+        prices:
+            targetEntity: Syclass\FipeBundle\Entity\FipeVehiclePrice
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: year
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+    lifecycleCallbacks: {  }
