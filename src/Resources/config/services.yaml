@@ -49,6 +49,12 @@ services:
         tags:
             -  { name: console.command }
 
+    syclass.fipe.command.monitor.categorie:
+        class: Syclass\FipeBundle\Command\SyclassFipeCreateCategoriesCommand
+        arguments: ['@doctrine']
+        tags:
+            -  { name: console.command }
+
     # Syclass\FipeBundle\Repository\:
     #     resource: '../Repository'
     #     autowire: true
