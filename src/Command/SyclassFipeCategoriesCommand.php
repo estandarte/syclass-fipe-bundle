@@ -13,10 +13,11 @@ use Syclass\Core\Entity\Category;
 use Syclass\Core\Entity\CategoryDescription;
 use Syclass\Core\Entity\Locale;
 
-class SyclassFipeCreateCategoriesCommand extends Command
+class SyclassFipeCategoriesCommand extends Command
 {
+    const CATEGORY_CARS = 1;
     protected $monitor;
-    protected static $defaultName = 'syclass:fipe:create-categories';
+    protected static $defaultName = 'syclass:fipe:categories';
     public function __construct(\Doctrine\Bundle\DoctrineBundle\Registry $doctrine)
     {
         parent::__construct();
@@ -37,7 +38,7 @@ class SyclassFipeCreateCategoriesCommand extends Command
         $categoryRepository = $this->em->getRepository(Category::class);
         $descriptionRepository = $this->em->getRepository(CategoryDescription::class);
 
-        $parent = $this->em->getRepository(Category::class)->find(2);
+        $parent = $this->em->getRepository(Category::class)->find(self::CATEGORY_CARS);
 
         foreach ($this->em->getRepository(FipeManufacturer::class)->findAll() as $manufacturer) {
             $io->writeln($manufacturer->getName());

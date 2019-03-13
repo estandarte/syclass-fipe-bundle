@@ -28,6 +28,7 @@ class SyclassFipePriceCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $io = new SymfonyStyle($input, $output);
         $this->monitor->execute();
         $io->success('Prices Updated.');
     }

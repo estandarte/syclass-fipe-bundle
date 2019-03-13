@@ -49,9 +49,21 @@ services:
         tags:
             -  { name: console.command }
 
-    syclass.fipe.command.monitor.categorie:
-        class: Syclass\FipeBundle\Command\SyclassFipeCreateCategoriesCommand
+    syclass.fipe.command.monitor.categories:
+        class: Syclass\FipeBundle\Command\SyclassFipeCategoriesCommand
         arguments: ['@doctrine']
+        tags:
+            -  { name: console.command }
+
+    syclass.fipe.command.monitor.all:
+        class: Syclass\FipeBundle\Command\SyclassFipeAllCommand
+        arguments:
+            - '@syclass.fipe.monitor.table'
+            - '@syclass.fipe.monitor.manufacturer'
+            - '@syclass.fipe.monitor.vehicle'
+            - '@syclass.fipe.monitor.year'
+            - '@syclass.fipe.monitor.price'
+
         tags:
             -  { name: console.command }
 
